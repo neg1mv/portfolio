@@ -1,22 +1,21 @@
 import { ArrowDown, ArrowUpRight, Github, Linkedin, Send } from 'lucide-react';
+import { useLanguage } from '../i18n.jsx';
 
 export default function Hero() {
+  const { t } = useLanguage();
   const scrollToProjects = () => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
 
   return (
     <section id="home" className="hero-section">
       <div className="hero-grid" aria-hidden="true" />
       <div className="hero-content">
-        <div className="eyebrow"><span className="availability-dot" /> AVAILABLE FOR NEW PROJECTS</div>
-        <p className="hero-kicker">HELLO, I’M ISMOIL IBRAHIMOV</p>
-        <h1>I build digital<br /><span>experiences</span> that<br className="mobile-break" /> matter<span className="accent-dot">.</span></h1>
-        <p className="hero-description">
-          Frontend developer focused on crafting clean, responsive and engaging web experiences.
-          I turn ideas into thoughtful interfaces with modern technologies.
-        </p>
+        <div className="eyebrow"><span className="availability-dot" /> {t.hero.available}</div>
+        <p className="hero-kicker">{t.hero.kicker}</p>
+        <h1>{t.hero.leadA}<br /><span>{t.hero.leadB}</span> {t.hero.leadC}<br className="mobile-break" /> {t.hero.leadD}<span className="accent-dot">.</span></h1>
+        <p className="hero-description">{t.hero.description}</p>
         <div className="hero-actions">
-          <button className="button-primary" onClick={scrollToProjects}>Explore my work <ArrowUpRight size={17} /></button>
-          <a className="button-secondary" href="mailto:ismoil281279@gmail.com">Get in touch <Send size={15} /></a>
+          <button className="button-primary" onClick={scrollToProjects}>{t.hero.explore} <ArrowUpRight size={17} /></button>
+          <a className="button-secondary" href="mailto:ismoil281279@gmail.com">{t.hero.getInTouch} <Send size={15} /></a>
         </div>
         <div className="hero-bottom">
           <div className="hero-socials">
@@ -24,7 +23,7 @@ export default function Hero() {
             <a href="https://www.linkedin.com/in/ismoil-ibragimov79" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a>
           </div>
           <button className="scroll-hint" onClick={() => document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })}>
-            SCROLL TO DISCOVER <ArrowDown size={14} />
+            {t.hero.scroll} <ArrowDown size={14} />
           </button>
         </div>
       </div>

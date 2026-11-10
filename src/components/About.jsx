@@ -1,24 +1,21 @@
 import { ArrowUpRight, Code2, Layers3, MonitorSmartphone } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const highlights = [
-  { icon: Code2, title: 'Frontend development', text: 'Building responsive interfaces with modern web technologies.' },
-  { icon: Layers3, title: 'Full-stack mindset', text: 'Connecting user experiences with APIs and content management.' },
-  { icon: MonitorSmartphone, title: 'Responsive by design', text: 'Making websites feel natural on phones, tablets and desktops.' },
-];
+import { useLanguage } from '../i18n.jsx';
 
 export default function About() {
+  const { t } = useLanguage();
+  const highlights = [Code2, Layers3, MonitorSmartphone].map((icon, index) => ({ icon, title: t.about.highlights[index][0], text: t.about.highlights[index][1] }));
   return (
     <section id="about" className="section-shell about-section">
       <div className="about-layout">
         <motion.div className="section-heading about-heading" initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          <span className="section-number">02 — A LITTLE ABOUT ME</span>
-          <h2>Curious mind.<br /><span>Builder’s mindset.</span></h2>
+          <span className="section-number">{t.about.label}</span>
+          <h2>{t.about.titleA}<br /><span>{t.about.titleB}</span></h2>
         </motion.div>
         <div className="about-copy">
-          <p className="about-lead">I’m a frontend developer who enjoys turning ideas into clean, useful digital experiences.</p>
-          <p className="about-description">I focus on thoughtful interfaces, responsive layouts and reliable integrations. I’m always learning, experimenting with new tools and improving the way I build for the web.</p>
-          <a className="about-link" href="#projects">Explore my work <ArrowUpRight size={16} /></a>
+          <p className="about-lead">{t.about.lead}</p>
+          <p className="about-description">{t.about.description}</p>
+          <a className="about-link" href="#projects">{t.about.explore} <ArrowUpRight size={16} /></a>
         </div>
       </div>
       <div className="about-highlights">

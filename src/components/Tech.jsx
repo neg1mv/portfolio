@@ -3,6 +3,7 @@ import {
   NextJSIcon, NodeJSIcon, NPMIcon, ReactIcon, SASSIcon, ShadcnUiIcon,
   TailwindCSSIcon, TSIcon, VercelIcon, VScode,
 } from '../assets/icon';
+import { useLanguage } from '../i18n.jsx';
 
 const technologies = [
   ['HTML', HTMLIcon], ['CSS', CSSIcon], ['JavaScript', JSIcon], ['Git', GitBashIcon],
@@ -13,12 +14,13 @@ const technologies = [
 ];
 
 export default function Tech() {
+  const { t } = useLanguage();
   return (
     <section id="skills" className="section-shell skills-section">
       <div className="section-heading">
-        <span className="section-number">01 — TOOLKIT</span>
-        <h2>Tools of the <span>trade.</span></h2>
-        <p>A selection of technologies I use to bring ideas to life.</p>
+        <span className="section-number">{t.tech.label}</span>
+        <h2>{t.tech.titleA} <span>{t.tech.titleB}</span></h2>
+        <p>{t.tech.description}</p>
       </div>
       <div className="tech-grid">
         {technologies.map(([name, Icon]) => (
